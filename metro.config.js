@@ -1,15 +1,11 @@
-/**
- * Metro configuration for React Native
- * https://github.com/facebook/metro
- *
- * @format
- */
+const { getDefaultConfig } = require("expo/metro-config");
+
+const defaultConfig = getDefaultConfig(__dirname);
 
 module.exports = {
-  transformer: {
-    babelTransformerPath: require.resolve('metro-react-native-babel-transformer'),
-  },
+  ...defaultConfig,
   resolver: {
-    sourceExts: ['jsx', 'js', 'ts', 'tsx', 'json'], // Add file extensions supported by Metro
+    sourceExts: [...defaultConfig.resolver.sourceExts, "jsx", "js", "ts", "tsx", "json"],
+    assetExts: [...defaultConfig.resolver.assetExts, "png", "jpg", "jpeg", "gif", "svg"],
   },
 };
